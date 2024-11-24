@@ -49,28 +49,26 @@ func robotSim(commands []int, obstacles [][]int) int {
 	var robot complex64 = 0 + 0i
 	dir := n
 
+	rightDirs := map[complex64]complex64{
+		n: e,
+		e: s,
+		s: w,
+		w: n,
+	}
+
+	leftDirs := map[complex64]complex64{
+		n: w,
+		w: s,
+		s: e,
+		e: n,
+	}
+
 	getDir := func(d complex64, command int) complex64 {
 		switch command {
 		case -1:
-			if d == n {
-				d = e
-			} else if d == e {
-				d = s
-			} else if d == s {
-				d = w
-			} else if d == w {
-				d = n
-			}
+			d = rightDirs[d]
 		case -2:
-			if d == n {
-				d = w
-			} else if d == w {
-				d = s
-			} else if d == s {
-				d = e
-			} else if d == e {
-				d = n
-			}
+			d = leftDirs[d]
 		default:
 		}
 		return d
@@ -111,6 +109,69 @@ func robotSim(commands []int, obstacles [][]int) int {
 	}
 	return ans
 }
+
+/*
+总结：
+
+   1. 这里利用go中的复数定义方向向量
+   ```
+	var n complex64 = 0 + 1i
+	var s complex64 = 0 + -1i
+	var w complex64 = -1 + 0i
+	var e complex64 = 1 + 0i
+   ```
+
+   官方解题思路中, 使用的是方向数组
+      n=0, e=1, s=2 ,w=3
+
+	  dx := []int{0,1,0,-1}
+	  dy := []int{1,0,-1,0}
+	              n e s w
+
+	  dx[i], dy[i] 共同构成一个方向
+
+
+   2. 同时定义两个转向的map, 查表法获取方向向量
+	rightDirs := map[complex64]complex64{
+		n: e,
+		e: s,
+		s: w,
+		w: n,
+	}
+
+	leftDirs := map[complex64]complex64{
+		n: w,
+		w: s,
+		s: e,
+		e: n,
+	}
+
+	可以优化为复数数组
+
+	dirs []complex64{n, e, s, w}
+
+	方向数组的计算方法
+	计算方向
+	   左转  dir = (dir + 3) % 4   当前n, 下标+3表示转到w
+	   右转  dir = (dir + 1) % 4   当前n, 下标+1表示转到e
+
+	上北下南左西右东
+
+   3. 训练执行指令时，根据方向向量 * 前进步数的向量 + 当前位置, 得到下一步的坐标
+
+     复数中的乘积表示旋转
+	    (x1+y1*i)  * (x2+y2*i) = (x1*x2 - y1*y2) + (x1*y2 + x2*y1)*i
+
+	 1. 复数 * 单位复数，会导致复数在平面上旋转90度
+	 2. 复数 * 实数 相当于复数的模进行缩放
+   ```
+	nextStep := func(p complex64, d complex64, step int) complex64 {
+		return p + d*complex(float32(step), 0)
+	}
+   ```
+   4. 计算下一步坐标是不是障碍物
+
+*/
 
 // @lc code=end
 
