@@ -1,10 +1,4 @@
 /*
- * @Author: 刘慧东
- * @Date: 2024-11-19 10:04:02
- * @LastEditors: 刘慧东
- * @LastEditTime: 2024-11-19 13:39:33
- */
-/*
  * @lc app=leetcode.cn id=874 lang=golang
  * @lcpr version=20003
  *
@@ -128,4 +122,3 @@ func robotSim(commands []int, obstacles [][]int) int {
 // @lcpr case=end
 
 */
-
