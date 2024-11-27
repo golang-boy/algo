@@ -2,7 +2,7 @@
  * @Author: 刘慧东
  * @Date: 2024-11-26 18:03:18
  * @LastEditors: 刘慧东
- * @LastEditTime: 2024-11-26 18:03:18
+ * @LastEditTime: 2024-11-27 09:23:51
  */
 
 /*
@@ -56,6 +56,11 @@ func r(p, v string, set map[string]bool, q map[string]string) bool {
 /*
 
 总结：和原始思路一样，只是v1版本做的过程中，陷入了嵌套模板的过程
+
+    需要分析清楚子问题，以及子问题的控制流程
+	  1. 需要做几件事情
+	  2. 不同事情的控制是否一样, 内部是否有相同子问题
+	  3. 多流程递归
 
 */
 

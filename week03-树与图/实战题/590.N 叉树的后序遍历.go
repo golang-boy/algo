@@ -1,8 +1,8 @@
 /*
- * @lc app=leetcode.cn id=589 lang=golang
+ * @lc app=leetcode.cn id=590 lang=golang
  * @lcpr version=20003
  *
- * [589] N 叉树的前序遍历
+ * [590] N 叉树的后序遍历
  */
 
 // @lcpr-template-start
@@ -17,18 +17,23 @@
  * }
  */
 
-func preorder(root *Node) []int {
+func postorder(root *Node) []int {
+
 	var ans []int
+
 	if root == nil {
 		return ans
 	}
 
-	ans = append(ans, root.Val)
 	for _, c := range root.Children {
-		a := preorder(c)
-		ans = append(ans, a...)
+		r := postorder(c)
+		ans = append(ans, r...)
 	}
+
+	ans = append(ans, root.Val)
+
 	return ans
+
 }
 
 // @lc code=end
