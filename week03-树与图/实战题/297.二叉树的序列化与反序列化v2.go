@@ -43,83 +43,47 @@ func Constructor() Codec {
 // Serializes a tree to a single string.
 func (this *Codec) serialize(root *TreeNode) string {
 	p := preorder(root)
-	i := inorder(root)
-
-	p = append(p, i...)
-
 	r := strings.Join(p, ",")
-
-	fmt.Println(r)
 	return r
-
 }
 
 // Deserializes your encoded data to tree.
 func (this *Codec) deserialize(data string) *TreeNode {
-
-	fmt.Println(data)
 	d := strings.Split(data, ",")
 
-	if len(d)%2 != 0 {
-		// 非法输入
-		return nil
-	}
-
-	pre := d[:len(d)/2]
-
-	in := d[len(d)/2:]
-
-	return buildTree(pre, in)
+	var i int = 0
+	return buildTree(d, &i)
 }
 
-func buildTree(p []string, i []string) *TreeNode {
-
-	if len(p) == 0 || len(i) == 0 {
+func buildTree(p []string, i *int) *TreeNode {
+	if p[*i] == "null" {
+		(*i)++
 		return nil
 	}
 
-	var mid = -1
-
-	val, _ := strconv.Atoi(p[0])
+	val, _ := strconv.Atoi(p[*i])
 
 	root := &TreeNode{
 		Val: val,
 	}
+	// 这里的p得共享，i为全局值，不停的往后移
+	(*i)++
 
-	for j, c := range i {
-		if c == p[0] {
-			mid = j
-			break
-		}
-	}
+	root.Left = buildTree(p, i)
 
-	root.Left = buildTree(p[1:mid+1], i[:mid])
-	root.Right = buildTree(p[mid+1:], i[mid+1:])
+	root.Right = buildTree(p, i)
 	return root
 }
 
 func preorder(root *TreeNode) []string {
 	var ans []string
 	if root == nil {
+		ans = append(ans, "null")
 		return ans
 	}
 	ans = append(ans, fmt.Sprintf("%d", root.Val))
 	ans = append(ans, preorder(root.Left)...)
 	ans = append(ans, preorder(root.Right)...)
-	return ans
-}
-
-func inorder(root *TreeNode) []string {
-
-	var ans []string
-	if root == nil {
-		return ans
-	}
-
-	ans = append(ans, inorder(root.Left)...)
-	ans = append(ans, fmt.Sprintf("%d", root.Val))
-	ans = append(ans, inorder(root.Right)...)
-
 	return ans
 }
 
@@ -132,11 +96,19 @@ func inorder(root *TreeNode) []string {
  */
 
 /*
+总结：
+   序列化: 使用任一种树遍历方法，上述使用了前序遍历
+      特殊处理的地方是叶子节点为null,这样就知道了左右节点的边界
+
+   反序列化：
+      处理序列时，节点结束的条件为，遇到null时，return nil。同时索引加一，指向下一个
+
+	  这里最重要的思想是，这个索引是要全局的，不论递归怎么递归，这个存储索引的变量需要全局
 
 
+	  做的过程中，脑子不清楚，老纠结于代码细节
 
-
- */
+*/
 
 // @lc code=end
 
