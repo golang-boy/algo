@@ -19,7 +19,24 @@
  */
 
 func guessNumber(n int) int {
+	left := 1
+	right := n
+	ans := 0
 
+	for left <= right {
+		mid := (left + right) / 2
+
+		switch guess(mid) {
+		case -1:
+			right = mid - 1
+		case 0:
+			ans = mid
+			return ans
+		case 1:
+			left = mid + 1
+		}
+	}
+	return ans
 }
 
 // @lc code=end

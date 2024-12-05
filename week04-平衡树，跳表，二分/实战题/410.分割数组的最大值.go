@@ -11,6 +11,16 @@
 // @lcpr-template-end
 // @lc code=start
 func splitArray(nums []int, k int) int {
+	/*
+	   输入：数组元素都为正数,  分组数k
+	   输出：分割后每个分组求和，找到最大值,
+	         这个最大值在所有情况的分组中最小
+
+
+
+
+
+	*/
 
 }
 
