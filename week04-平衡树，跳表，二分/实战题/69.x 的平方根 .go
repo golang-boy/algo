@@ -10,6 +10,29 @@
 // @lcpr-template-end
 // @lc code=start
 func mySqrt(x int) int {
+	/*
+
+	   ans * ans = x
+
+	   ans = x /ans
+	*/
+
+	left := 1
+	right := x
+
+	for left < right {
+		mid := (left + right + 1) / 2
+
+		// 这是需要找最中间的数字，
+		// 找到后判断是否 mid*mid<=x,
+		// 数字的范围在1-x中间
+		if mid*mid <= x {
+			left = mid
+		} else {
+			right = mid - 1
+		}
+	}
+	return right
 
 }
 
