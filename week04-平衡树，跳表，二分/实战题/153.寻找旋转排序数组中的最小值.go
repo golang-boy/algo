@@ -11,7 +11,44 @@
 // @lc code=start
 func findMin(nums []int) int {
 
+	// left := 0
+	// right := len(nums)
+	// for left < right {
+	// 	mid := (right + left) / 2
+
+	// 	if nums[mid] >= nums[right] {
+	// 		right = mid
+	// 	} else {
+	// 		left = mid + 1
+	// 	}
+	// }
+
+	left := 0
+	right := len(nums) - 1
+	for left < right {
+		mid := (right + left) / 2
+
+		if nums[mid] <= nums[right] {
+			right = mid
+		} else {
+			left = mid + 1
+		}
+	}
+
+	return nums[right]
 }
+
+/*
+
+总结：
+
+   一个是判定的不等式，如果需要包含，则为right=mid
+
+   套用模版时，
+   一定要注意，该问题是否有解，有解 left，right初始化时为0，n-1
+
+   如果无解，模板1.1为 0，n,  模版1.2为-1，n-1, 同时mid计算时，需要额外加个1
+*/
 
 // @lc code=end
 
