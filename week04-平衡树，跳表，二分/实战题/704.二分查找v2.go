@@ -1,4 +1,10 @@
 /*
+ * @Author: 刘慧东
+ * @Date: 2024-12-10 10:42:09
+ * @LastEditors: 刘慧东
+ * @LastEditTime: 2024-12-10 10:53:25
+ */
+/*
  * @lc app=leetcode.cn id=704 lang=golang
  * @lcpr version=20004
  *
@@ -13,49 +19,34 @@ func search(nums []int, target int) int {
 
 	left := 0
 	right := len(nums) - 1
+	var ans = -1
 
-	for left <= right {
-		mid := (left + right) / 2
-
-		if nums[mid] == target {
-			return mid
-		}
-
-		if target < nums[mid] {
-			// 模板值在左边
-			right = mid - 1
-		} else {
-			// 模板值在右边
-			left = mid + 1
-		}
-	}
-
-	return -1
-	// 元素不重复
-
-	left := 0
-	right := len(nums) - 1
-	ans := -1
-
-	for left <= right {
-
-		mid := (right-left)/2 + left
-
-		if nums[mid] > target {
-			right = mid - 1
-			continue
-		}
-
-		if nums[mid] < target {
-			left = mid + 1
-			continue
-		}
-		ans = mid
-		break
-	}
-
+	r(left, right, nums, target, &ans)
 	return ans
+}
 
+func r(left, right int, nums []int, target int, ans *int) {
+
+	if left > right {
+		*ans = -1
+		return
+	}
+
+	mid := (left + right) / 2
+
+	if nums[mid] == target {
+		*ans = mid
+		return
+	}
+
+	if nums[mid] < target {
+		left = mid + 1
+		r(left, right, nums, target, ans)
+
+	} else if nums[mid] > target {
+		right = mid - 1
+		r(left, right, nums, target, ans)
+	}
 }
 
 /*
