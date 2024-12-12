@@ -39,6 +39,7 @@ func minDays(bloomDay []int, m int, k int) int {
 						 right := max(bloomDay)  做len(bloomDay)束花，最大天数
 
 					mid代表需要验证的条件,如何验证mid符合要求
+					    mid表示，要搞定m束k朵花，可能的天数
 	*/
 
 	if len(bloomDay) < m*k {
@@ -50,10 +51,10 @@ func minDays(bloomDay []int, m int, k int) int {
 
 	for left < right {
 		mid := (left + right) / 2
-		if validate(mid, bloomDay, m, k) {
+		if validate(mid, bloomDay, m, k) { // mid天内能搞定m束花，甚至更多，取个最小值，需要right左移
 			right = mid
 		} else {
-			left = mid + 1
+			left = mid + 1 // mid天内搞不定，left右移，需要更多的天, 即mid需要更大一点
 		}
 	}
 	return right
@@ -82,21 +83,23 @@ func min(a []int) int {
 
 func validate(mid int, bloomDay []int, m, k int) bool {
 
-	sum := 0
-	cnt := 0
-
+	sum := 0 // 当前有几束花
+	cnt := 0 // 连续相邻花的计数
 	for _, d := range bloomDay {
-		if d <= mid {
+		// mid表示，要搞定m束k朵花，可能的天数, 比如，mid为5，表示5天要做完m束花,
+		//  当前已经开的花的天数，是否小于等于现在的天数
+		if d <= mid { // 该花可以在5天前开放，满足条件, 连续花朵++,
 			cnt++
-			if cnt == k {
-				sum++
-				cnt = 0
+			if cnt == k { // 当加到等于k时，cnt清零
+				sum++   // 完成一束花，花束计数++
+				cnt = 0 // 每扎完一束花，计数清理
 			}
 		} else {
-			cnt = 0
+			cnt = 0 // 该花的开放时间大于要求，cnt清理，重新算连续花朵
 		}
 	}
 
+	// 所有的都计算完毕, 当前花束的数量是否大于等于m, 如果大于说明5天内能搞定比m束花还多
 	return sum >= m
 
 }
