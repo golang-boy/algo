@@ -16,6 +16,30 @@ package main
 
 */
 
+type Node struct {
+	left  *Node
+	right *Node
+
+	key, val  int
+	cnt, size int
+}
+
+type Treap struct {
+}
+
+func (t *Treap) Insert(data int)             {}
+func (t *Treap) Remove(data int)             {}
+func (t *Treap) GetRankByVal(target int) int { return 0 }
+func (t *Treap) GetValByRank(data int) int   {}
+func (t *Treap) GetPre(target int) int       {}
+func (t *Treap) GetNext(target int) int      {}
+
 func main() {
+
+	/*
+
+
+
+	 */
 
 }
