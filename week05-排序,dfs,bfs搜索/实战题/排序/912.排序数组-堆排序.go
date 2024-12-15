@@ -28,6 +28,44 @@ func sortArray(nums []int) []int {
 		   2. 基于非比较的排序，时间复杂度受元素范围和分布等多种因素影响
 	*/
 
+	h := &MinHeap{}
+	heap.Init(h)
+
+	ans := []int{}
+
+	for i := 0; i < len(nums); i++ {
+		heap.Push(h, nums[i])
+	}
+
+	for i := 0; i < len(nums); i++ {
+		ans = append(ans, heap.Pop(h).(int))
+	}
+
+	return ans
+}
+
+type MinHeap []int
+
+func (m *MinHeap) Pop() any {
+	x := (*m)[len(*m)-1]
+	*m = (*m)[:len(*m)-1]
+	return x
+}
+
+func (m *MinHeap) Push(x any) {
+	*m = append(*m, x.(int))
+}
+
+func (m MinHeap) Less(i, j int) bool {
+	return m[i] < m[j]
+}
+
+func (m MinHeap) Swap(i, j int) {
+	m[i], m[j] = m[j], m[i]
+}
+
+func (m MinHeap) Len() int {
+	return len(m)
 }
 
 // @lc code=end

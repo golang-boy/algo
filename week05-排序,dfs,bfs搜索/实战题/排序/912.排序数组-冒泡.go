@@ -28,6 +28,16 @@ func sortArray(nums []int) []int {
 		   2. 基于非比较的排序，时间复杂度受元素范围和分布等多种因素影响
 	*/
 
+	for i := 0; i < len(nums); i++ {
+		// 依次从后面的元素中找最小的交换
+		for j := i + 1; j < len(nums); j++ {
+			if nums[i] > nums[j] {
+				nums[i], nums[j] = nums[j], nums[i]
+			}
+		}
+	}
+
+	return nums
 }
 
 // @lc code=end

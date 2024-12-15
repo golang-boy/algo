@@ -28,6 +28,41 @@ func sortArray(nums []int) []int {
 		   2. 基于非比较的排序，时间复杂度受元素范围和分布等多种因素影响
 	*/
 
+	length := len(nums)
+
+	if length < 2 {
+		return nums
+	}
+
+	mid := length / 2
+
+	left := sortArray(nums[:mid])
+	right := sortArray(nums[mid:])
+	return merge(left, right)
+}
+
+func merge(left, right []int) []int {
+	ans := []int{}
+
+	if len(left) == 0 && len(right) == 0 {
+		return ans
+	} else if len(left) != 0 && len(right) == 0 {
+		ans = append(ans, left...)
+		return ans
+	} else if len(right) != 0 && len(left) == 0 {
+		ans = append(ans, right...)
+		return ans
+	}
+
+	if left[0] >= right[0] {
+		ans = append(ans, right[0])
+		ans = append(ans, merge(left, right[1:])...)
+	} else {
+		ans = append(ans, left[0])
+		ans = append(ans, merge(left[1:], right)...)
+	}
+
+	return ans
 }
 
 // @lc code=end
