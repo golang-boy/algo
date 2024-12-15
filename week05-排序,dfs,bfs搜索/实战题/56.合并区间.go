@@ -11,6 +11,13 @@
 // @lc code=start
 func merge(intervals [][]int) [][]int {
 
+	/*
+		输入：区间集合
+		输出：返回不重叠的区间集合
+
+		重叠的判定：前一个下标小于等于后一个下标
+	*/
+
 }
 
 // @lc code=end
