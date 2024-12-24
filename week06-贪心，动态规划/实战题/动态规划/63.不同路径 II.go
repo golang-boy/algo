@@ -11,6 +11,12 @@
 // @lc code=start
 func uniquePathsWithObstacles(obstacleGrid [][]int) int {
 
+	/*
+	   输入：坐标矩阵地图, 有障碍物矩阵中表示1
+	   输出：到达右下角的不同路径数量
+
+	*/
+
 }
 
 // @lc code=end
