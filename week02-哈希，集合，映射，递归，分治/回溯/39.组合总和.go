@@ -1,9 +1,4 @@
-/*
- * @Author: 刘慧东
- * @Date: 2024-11-25 10:47:39
- * @LastEditors: 刘慧东
- * @LastEditTime: 2024-11-25 13:33:11
- */
+
 /*
  * @lc app=leetcode.cn id=39 lang=golang
  * @lcpr version=20003

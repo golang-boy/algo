@@ -1,9 +1,4 @@
-/*
- * @Author: 刘慧东
- * @Date: 2024-11-26 18:03:18
- * @LastEditors: 刘慧东
- * @LastEditTime: 2024-11-27 09:23:51
- */
+
 
 /*
  * @lc app=leetcode.cn id=面试题 16.18 lang=golang
