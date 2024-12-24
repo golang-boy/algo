@@ -33,42 +33,63 @@ func lemonadeChange(bills []int) bool {
 	        }
 	*/
 
-	money := []int{}
-	ans := false
+	money := map[int]int{}
+
 	for i := range bills {
-		if bills[i] == 5 {
-			money = append(money, 5)
-			ans = true
-			continue
+		if !exchange(bills[i]-5, money) { // 不能找零，则结束
+			return false
 		}
+		money[bills[i]]++
+	}
+	return true
+}
 
-		if len(money) == 0 {
-			ans = false
-			break
-		}
+func exchange(amount int, money map[int]int) bool {
+	// 方法一
 
-		bill := bills[i]
-		for j := 0; j < len(money); j++ {
-			bill = bill - money[j]
-			if bill == 0 {
-				ans = true
-				// money应该去掉j对应的值
-				money = money[j:]
-				money = append(money, bills[i])
-				break
-			}
-		}
+	// if amount == 0 {
+	// 	return true
+	// }
+	// for _, v := range []int{20, 10, 5} {
+	// 	nums := money[v]
+	// 	for z := 1; z <= nums; z++ {
+	// 		if amount-v == 0 {
+	// 			money[v]--
+	// 			return true
+	// 		} else if amount-v > 0 {
+	// 			amount -= v
+	// 			money[v]--
+	// 		} else {
+	// 			break
+	// 		}
+	// 	}
+	// }
+	// return false
 
-		if bill > 0 {
-			ans = false
-			break
+	// 61/61 cases passed (0 ms)
+	// Your runtime beats 100 % of golang submissions
+	// Your memory usage beats 38.33 % of golang submissions (9.4 MB)
+
+	// 方法二
+	for _, v := range []int{20, 10, 5} {
+		for amount >= v && money[v] > 0 {
+			amount -= v
+			money[v]--
 		}
 	}
-	return ans
+	return amount == 0
+
+	//	61/61 cases passed (0 ms)
+	// Your runtime beats 100 % of golang submissions
+	// Your memory usage beats 37.5 % of golang submissions (9.5 MB)
 }
 
 /*
- */
+    总结：
+	    先判断最大的，每次尝试减去最大的面值，减了之后，判断是否继续，对应的money得减少
+
+		需要注意的是，money[v] 等建一个副本，用于循环，否则某某会修改它的值，某些循环导致失败
+*/
 
 // @lc code=end
 

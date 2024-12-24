@@ -1,3 +1,4 @@
+
 /*
  * @lc app=leetcode.cn id=322 lang=golang
  * @lcpr version=20004
@@ -24,6 +25,10 @@ func coinChange(coins []int, amount int) int {
 		    组合问题, 每次选取时，可以是三个中的任何一个
 			amount是状态，索引不是状态
 
+		求最小个数， 考虑使用bfs, 状态空间为coins的组合，满足条件的coins的组合
+
+
+
 		代码如何表示?
 		    本题中看，需要使用递归，递归最大的，非叶子尝试选取其他, 递归叶子
 
@@ -31,34 +36,16 @@ func coinChange(coins []int, amount int) int {
 	*/
 
 	ans := math.MaxInt
-	chosen := []int{}
 
-	dfs(amount, coins, chosen, &ans)
+	for amount > 0 {
+		for i := 0; i < len(coins); i++ {
+			amount -= coins[i]
 
-	if ans == math.MaxInt {
-		return -1
-	}
-	return ans
-}
-
-func dfs(amount int, coins []int, chosen []int, ans *int) {
-	if amount == 0 {
-		// 统计结果
-		if *ans > len(chosen) {
-			*ans = len(chosen)
 		}
-		return
+
 	}
 
-	if amount < 0 {
-		return
-	}
-
-	for i := 0; i < len(coins); i++ {
-		chosen = append(chosen, coins[i])
-		dfs(amount-coins[i], coins, chosen, ans)
-		chosen = chosen[:len(chosen)-1]
-	}
+	return ans
 }
 
 /*
