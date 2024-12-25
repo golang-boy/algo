@@ -11,6 +11,14 @@
 // @lc code=start
 func maxProduct(nums []int) int {
 
+	/*
+
+	   nums[i] * f(i-1) > 0
+
+	   f[i] =  f[i-1]*nums[i]
+
+	*/
+
 }
 
 // @lc code=end
