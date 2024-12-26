@@ -10,6 +10,53 @@
 // @lcpr-template-end
 // @lc code=start
 func lengthOfLIS(nums []int) int {
+	/*
+
+		f(i) = 1+f(i+1)
+		f(i) = f(i+1)
+
+
+	*/
+
+	dp := make([]int, len(nums)+1)
+
+	for i := 1; i < len(nums); i++ {
+		max := 0
+		for j := i + 1; j < len(nums); j++ {
+			if nums[j] > max {
+				max = nums[j]
+			}
+		}
+
+		if nums[i-1] > max {
+			dp[i-1] = 1 + dp[i]
+		} else {
+			dp[i-1] = dp[i]
+		}
+	}
+
+	ans := 0
+	for i := range dp {
+		ans += dp[i]
+	}
+
+	return ans
+}
+
+func lengthLis(i int, nums []int) int {
+
+	flag := false
+	for j := i + 1; j < len(nums); j++ {
+		if nums[j] > nums[i] {
+			flag = true
+			break
+		}
+	}
+	if flag {
+		return 1 + lengthLis(i, nums)
+	} else {
+		return lengthLis(i, nums)
+	}
 
 }
 
