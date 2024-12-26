@@ -10,6 +10,8 @@
 // @lcpr-template-end
 // @lc code=start
 func longestCommonSubsequence(text1 string, text2 string) int {
+	/*
+	 */
 
 	/*
 		     输入俩字符串
