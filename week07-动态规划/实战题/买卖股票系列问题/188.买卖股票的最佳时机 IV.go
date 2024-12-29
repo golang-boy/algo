@@ -29,7 +29,7 @@ func maxProfit(k int, prices []int) int {
 
 	for i := 1; i <= len(prices)-1; i++ {
 		for j := 0; j < 2; j++ {
-			for h := 0; h <= k; k++ {
+			for h := 0; h <= k; h++ {
 				// 买
 				if h > 0 {
 					f[i][1][h] = max(f[i][1][h], f[i-1][0][h-1]-prices[i])
