@@ -11,6 +11,12 @@
 // @lc code=start
 func change(amount int, coins []int) int {
 
+	/*
+	  零钱兑换 =》完全背包模型
+
+	  零钱 == 物品，体积 == 面值， 价值 == 1 求min
+	*/
+
 }
 
 // @lc code=end
