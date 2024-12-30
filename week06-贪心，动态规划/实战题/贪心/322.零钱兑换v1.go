@@ -63,6 +63,7 @@ func dfs(amount int, coins []int, chosen []int, ans *int) {
 	for i := 0; i < len(coins); i++ {
 		chosen = append(chosen, coins[i])
 		dfs(amount-coins[i], coins, chosen, ans)
+
 		chosen = chosen[:len(chosen)-1]
 	}
 }
