@@ -1,26 +1,28 @@
+
 /*
- * @lc app=leetcode.cn id=188 lang=golang
+ * @lc app=leetcode.cn id=123 lang=golang
  * @lcpr version=20004
  *
- * [188] 买卖股票的最佳时机 IV
+ * [123] 买卖股票的最佳时机 III
  */
 
 // @lcpr-template-start
 
 // @lcpr-template-end
 // @lc code=start
-func maxProfit(k int, prices []int) int {
+func maxProfit(prices []int) int {
 
 	prices = append([]int{0}, prices...)
 
 	f := make([][][]int, len(prices))
+	k := 2
 
 	for i := 0; i < len(prices); i++ {
 		f[i] = make([][]int, 2)
 		for j := 0; j < 2; j++ {
 			f[i][j] = make([]int, k+1) // 加1是为确保从1开始, 简化程序
 			for h := 0; h <= k; h++ {
-				f[i][j][h] = -1000
+				f[i][j][h] = -100000
 			}
 		}
 	}
@@ -45,7 +47,7 @@ func maxProfit(k int, prices []int) int {
 	}
 
 	// 最多k笔交易，因此需要找最大的那个
-	ans := -1000
+	ans := -100000
 
 	for h := 0; h <= k; h++ {
 		ans = max(ans, f[len(prices)-1][0][h])
@@ -64,11 +66,19 @@ func max(a, b int) int {
 
 /*
 // @lcpr case=start
-// 2\n[2,4,1]\n
+// [3,3,5,0,0,3,1,4]\n
 // @lcpr case=end
 
 // @lcpr case=start
-// 2\n[3,2,6,5,0,3]\n
+// [1,2,3,4,5]\n
+// @lcpr case=end
+
+// @lcpr case=start
+// [7,6,4,3,1]\n
+// @lcpr case=end
+
+// @lcpr case=start
+// [1]\n
 // @lcpr case=end
 
 */
