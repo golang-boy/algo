@@ -45,18 +45,18 @@ func lengthOfLIS(nums []int) int {
 
 func lengthLis(i int, nums []int) int {
 
-	// flag := false
-	// for j := i + 1; j < len(nums); j++ {
-	// 	if nums[j] > nums[i] {
-	// 		flag = true
-	// 		break
-	// 	}
-	// }
-	// if flag {
-	// 	return 1 + lengthLis(i, nums)
-	// } else {
-	// 	return lengthLis(i, nums)
-	// }
+	flag := false
+	for j := i + 1; j < len(nums); j++ {
+		if nums[j] > nums[i] {
+			flag = true
+			break
+		}
+	}
+	if flag {
+		return 1 + lengthLis(i, nums)
+	} else {
+		return lengthLis(i, nums)
+	}
 
 	n := len(nums)
 	f := make([]int, n)
