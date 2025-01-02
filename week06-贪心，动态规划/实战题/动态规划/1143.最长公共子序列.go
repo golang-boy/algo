@@ -11,9 +11,6 @@
 // @lc code=start
 func longestCommonSubsequence(text1 string, text2 string) int {
 	/*
-	 */
-
-	/*
 		     输入俩字符串
 			 输出公共子序列的长度
 
