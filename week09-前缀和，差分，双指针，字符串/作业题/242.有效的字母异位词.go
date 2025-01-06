@@ -1,15 +1,15 @@
 /*
- * @lc app=leetcode.cn id=516 lang=golang
+ * @lc app=leetcode.cn id=242 lang=golang
  * @lcpr version=20004
  *
- * [516] 最长回文子序列
+ * [242] 有效的字母异位词
  */
 
 // @lcpr-template-start
 
 // @lcpr-template-end
 // @lc code=start
-func longestPalindromeSubseq(s string) int {
+func isAnagram(s string, t string) bool {
 
 }
 
@@ -17,11 +17,11 @@ func longestPalindromeSubseq(s string) int {
 
 /*
 // @lcpr case=start
-// "bbbab"\n
+// "anagram"\n"nagaram"\n
 // @lcpr case=end
 
 // @lcpr case=start
-// "cbbd"\n
+// "rat"\n"car"\n
 // @lcpr case=end
 
 */

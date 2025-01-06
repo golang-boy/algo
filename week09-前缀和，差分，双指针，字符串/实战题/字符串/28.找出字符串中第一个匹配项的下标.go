@@ -1,15 +1,15 @@
 /*
- * @lc app=leetcode.cn id=516 lang=golang
+ * @lc app=leetcode.cn id=28 lang=golang
  * @lcpr version=20004
  *
- * [516] 最长回文子序列
+ * [28] 找出字符串中第一个匹配项的下标
  */
 
 // @lcpr-template-start
 
 // @lcpr-template-end
 // @lc code=start
-func longestPalindromeSubseq(s string) int {
+func strStr(haystack string, needle string) int {
 
 }
 
@@ -17,11 +17,11 @@ func longestPalindromeSubseq(s string) int {
 
 /*
 // @lcpr case=start
-// "bbbab"\n
+// "sadbutsad"\n"sad"\n
 // @lcpr case=end
 
 // @lcpr case=start
-// "cbbd"\n
+// "leetcode"\n"leeto"\n
 // @lcpr case=end
 
 */

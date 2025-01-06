@@ -1,15 +1,15 @@
 /*
- * @lc app=leetcode.cn id=516 lang=golang
+ * @lc app=leetcode.cn id=14 lang=golang
  * @lcpr version=20004
  *
- * [516] 最长回文子序列
+ * [14] 最长公共前缀
  */
 
 // @lcpr-template-start
 
 // @lcpr-template-end
 // @lc code=start
-func longestPalindromeSubseq(s string) int {
+func longestCommonPrefix(strs []string) string {
 
 }
 
@@ -17,11 +17,11 @@ func longestPalindromeSubseq(s string) int {
 
 /*
 // @lcpr case=start
-// "bbbab"\n
+// ["flower","flow","flight"]\n
 // @lcpr case=end
 
 // @lcpr case=start
-// "cbbd"\n
+// ["dog","racecar","car"]\n
 // @lcpr case=end
 
 */

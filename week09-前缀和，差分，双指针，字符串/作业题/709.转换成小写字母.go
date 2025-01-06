@@ -1,15 +1,15 @@
 /*
- * @lc app=leetcode.cn id=516 lang=golang
+ * @lc app=leetcode.cn id=709 lang=golang
  * @lcpr version=20004
  *
- * [516] 最长回文子序列
+ * [709] 转换成小写字母
  */
 
 // @lcpr-template-start
 
 // @lcpr-template-end
 // @lc code=start
-func longestPalindromeSubseq(s string) int {
+func toLowerCase(s string) string {
 
 }
 
@@ -17,11 +17,15 @@ func longestPalindromeSubseq(s string) int {
 
 /*
 // @lcpr case=start
-// "bbbab"\n
+// "Hello"\n
 // @lcpr case=end
 
 // @lcpr case=start
-// "cbbd"\n
+// "here"\n
+// @lcpr case=end
+
+// @lcpr case=start
+// "LOVELY"\n
 // @lcpr case=end
 
 */

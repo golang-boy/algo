@@ -1,15 +1,15 @@
 /*
- * @lc app=leetcode.cn id=516 lang=golang
+ * @lc app=leetcode.cn id=771 lang=golang
  * @lcpr version=20004
  *
- * [516] 最长回文子序列
+ * [771] 宝石与石头
  */
 
 // @lcpr-template-start
 
 // @lcpr-template-end
 // @lc code=start
-func longestPalindromeSubseq(s string) int {
+func numJewelsInStones(jewels string, stones string) int {
 
 }
 
@@ -17,11 +17,11 @@ func longestPalindromeSubseq(s string) int {
 
 /*
 // @lcpr case=start
-// "bbbab"\n
+// "aA"\n"aAAbbbb"\n
 // @lcpr case=end
 
 // @lcpr case=start
-// "cbbd"\n
+// "z"\n"ZZ"\n
 // @lcpr case=end
 
 */

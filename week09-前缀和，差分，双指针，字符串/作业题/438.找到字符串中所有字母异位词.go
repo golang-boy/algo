@@ -1,15 +1,15 @@
 /*
- * @lc app=leetcode.cn id=516 lang=golang
+ * @lc app=leetcode.cn id=438 lang=golang
  * @lcpr version=20004
  *
- * [516] 最长回文子序列
+ * [438] 找到字符串中所有字母异位词
  */
 
 // @lcpr-template-start
 
 // @lcpr-template-end
 // @lc code=start
-func longestPalindromeSubseq(s string) int {
+func findAnagrams(s string, p string) []int {
 
 }
 
@@ -17,11 +17,11 @@ func longestPalindromeSubseq(s string) int {
 
 /*
 // @lcpr case=start
-// "bbbab"\n
+// "cbaebabacd"\n"abc"\n
 // @lcpr case=end
 
 // @lcpr case=start
-// "cbbd"\n
+// "abab"\n"ab"\n
 // @lcpr case=end
 
 */

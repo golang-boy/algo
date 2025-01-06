@@ -1,15 +1,15 @@
 /*
- * @lc app=leetcode.cn id=516 lang=golang
+ * @lc app=leetcode.cn id=53 lang=golang
  * @lcpr version=20004
  *
- * [516] 最长回文子序列
+ * [53] 最大子数组和
  */
 
 // @lcpr-template-start
 
 // @lcpr-template-end
 // @lc code=start
-func longestPalindromeSubseq(s string) int {
+func maxSubArray(nums []int) int {
 
 }
 
@@ -17,11 +17,15 @@ func longestPalindromeSubseq(s string) int {
 
 /*
 // @lcpr case=start
-// "bbbab"\n
+// [-2,1,-3,4,-1,2,1,-5,4]\n
 // @lcpr case=end
 
 // @lcpr case=start
-// "cbbd"\n
+// [1]\n
+// @lcpr case=end
+
+// @lcpr case=start
+// [5,4,-1,7,8]\n
 // @lcpr case=end
 
 */

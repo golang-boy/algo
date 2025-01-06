@@ -1,15 +1,16 @@
+
 /*
- * @lc app=leetcode.cn id=516 lang=golang
+ * @lc app=leetcode.cn id=15 lang=golang
  * @lcpr version=20004
  *
- * [516] 最长回文子序列
+ * [15] 三数之和
  */
 
 // @lcpr-template-start
 
 // @lcpr-template-end
 // @lc code=start
-func longestPalindromeSubseq(s string) int {
+func threeSum(nums []int) [][]int {
 
 }
 
@@ -17,11 +18,15 @@ func longestPalindromeSubseq(s string) int {
 
 /*
 // @lcpr case=start
-// "bbbab"\n
+// [-1,0,1,2,-1,-4]\n
 // @lcpr case=end
 
 // @lcpr case=start
-// "cbbd"\n
+// [0,1,1]\n
+// @lcpr case=end
+
+// @lcpr case=start
+// [0,0,0]\n
 // @lcpr case=end
 
 */

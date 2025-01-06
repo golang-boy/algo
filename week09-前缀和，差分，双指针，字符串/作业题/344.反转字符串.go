@@ -1,15 +1,15 @@
 /*
- * @lc app=leetcode.cn id=516 lang=golang
+ * @lc app=leetcode.cn id=344 lang=golang
  * @lcpr version=20004
  *
- * [516] 最长回文子序列
+ * [344] 反转字符串
  */
 
 // @lcpr-template-start
 
 // @lcpr-template-end
 // @lc code=start
-func longestPalindromeSubseq(s string) int {
+func reverseString(s []byte) {
 
 }
 
@@ -17,11 +17,11 @@ func longestPalindromeSubseq(s string) int {
 
 /*
 // @lcpr case=start
-// "bbbab"\n
+// ["h","e","l","l","o"]\n
 // @lcpr case=end
 
 // @lcpr case=start
-// "cbbd"\n
+// ["H","a","n","n","a","h"]\n
 // @lcpr case=end
 
 */

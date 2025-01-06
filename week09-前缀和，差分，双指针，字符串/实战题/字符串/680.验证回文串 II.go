@@ -1,15 +1,15 @@
 /*
- * @lc app=leetcode.cn id=516 lang=golang
+ * @lc app=leetcode.cn id=680 lang=golang
  * @lcpr version=20004
  *
- * [516] 最长回文子序列
+ * [680] 验证回文串 II
  */
 
 // @lcpr-template-start
 
 // @lcpr-template-end
 // @lc code=start
-func longestPalindromeSubseq(s string) int {
+func validPalindrome(s string) bool {
 
 }
 
@@ -17,11 +17,15 @@ func longestPalindromeSubseq(s string) int {
 
 /*
 // @lcpr case=start
-// "bbbab"\n
+// "aba"\n
 // @lcpr case=end
 
 // @lcpr case=start
-// "cbbd"\n
+// "abca"\n
+// @lcpr case=end
+
+// @lcpr case=start
+// "abc"\n
 // @lcpr case=end
 
 */

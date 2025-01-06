@@ -1,4 +1,3 @@
-
 /*
  * @lc app=leetcode.cn id=684 lang=golang
  * @lcpr version=20004
@@ -11,7 +10,48 @@
 // @lcpr-template-end
 // @lc code=start
 func findRedundantConnection(edges [][]int) []int {
+	/*
 
+
+
+	 */
+
+	fa := make([]int, 1001)
+
+	for i := 0; i < 1001; i++ {
+		fa[i] = i
+	}
+
+	ans := []int{}
+
+	for _, edge := range edges {
+		if find(fa, edge[0]) == find(fa, edge[1]) {
+			ans = edge
+			break
+		}
+		join(fa, edge[0], edge[1])
+	}
+
+	return ans
+}
+
+func join(fa []int, x, y int) {
+
+	x = find(fa, x)
+	y = find(fa, y)
+
+	if x != y {
+		fa[x] = y
+	}
+}
+
+func find(fa []int, x int) int {
+	if fa[x] == x {
+		return x
+	}
+
+	fa[x] = find(fa, fa[x])
+	return fa[x]
 }
 
 // @lc code=end

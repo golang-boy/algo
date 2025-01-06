@@ -1,15 +1,15 @@
 /*
- * @lc app=leetcode.cn id=516 lang=golang
+ * @lc app=leetcode.cn id=11 lang=golang
  * @lcpr version=20004
  *
- * [516] 最长回文子序列
+ * [11] 盛最多水的容器
  */
 
 // @lcpr-template-start
 
 // @lcpr-template-end
 // @lc code=start
-func longestPalindromeSubseq(s string) int {
+func maxArea(height []int) int {
 
 }
 
@@ -17,11 +17,11 @@ func longestPalindromeSubseq(s string) int {
 
 /*
 // @lcpr case=start
-// "bbbab"\n
+// [1,8,6,2,5,4,8,3,7]\n
 // @lcpr case=end
 
 // @lcpr case=start
-// "cbbd"\n
+// [1,1]\n
 // @lcpr case=end
 
 */
