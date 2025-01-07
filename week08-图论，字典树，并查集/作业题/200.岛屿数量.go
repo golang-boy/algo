@@ -14,40 +14,31 @@ func numIslands(grid [][]byte) int {
 	m := len(grid)
 	n := len(grid[0])
 
-	var outside = n * m
-	fa := make([]int, m*n+1)
+	fa := make([]int, m*n)
 
-	fa[nums(m-1, n-1, n)+1] = nums(m-1, n-1, n) + 1
+	ans := 0
 
 	for i := 0; i < m; i++ {
 		for j := 0; j < n; j++ {
 			if grid[i][j] == '1' {
 				id := nums(i, j, n)
 				fa[id] = id
+				// 有一个1则加加
+				ans++
 			}
 		}
 	}
 
 	for i := 0; i < m; i++ {
 		for j := 0; j < n; j++ {
-			dfs(i, j, grid, fa, outside)
+			dfs(i, j, grid, fa, &ans)
 		}
 	}
-
-	ans := 0
-
-	for i := 0; i < len(fa); i++ {
-		if find(fa, i) != outside {
-			ans++
-			fmt.Println(fa[i])
-		}
-	}
-
 	return ans
 
 }
 
-func dfs(x, y int, grid [][]byte, fa []int, outside int) {
+func dfs(x, y int, grid [][]byte, fa []int, ans *int) {
 
 	if grid[x][y] == '0' {
 		return
@@ -68,10 +59,20 @@ func dfs(x, y int, grid [][]byte, fa []int, outside int) {
 		}
 
 		if grid[nx][ny] == '0' {
-			join(fa, nums(nx, ny, n), outside)
 			continue
 		}
-		join(fa, nums(nx, ny, n), nums(x, y, n))
+
+		// 等于1时,
+
+		rx := find(fa, nums(nx, ny, n))
+		ry := find(fa, nums(x, y, n))
+
+		if rx != ry {
+			fa[rx] = ry
+			// 每合并一个则--
+			(*ans)--
+
+		}
 	}
 }
 
@@ -88,14 +89,11 @@ func find(fa []int, x int) int {
 	return fa[x]
 }
 
-func join(fa []int, x, y int) {
-	x = find(fa, x)
-	y = find(fa, y)
+/*
+总结：
+	初始时，每个1为一个岛屿，合并后，岛屿减一, 最后通过并查集合并后，剩余的则为岛屿数量
 
-	if x != y {
-		fa[x] = y
-	}
-}
+*/
 
 // @lc code=end
 
