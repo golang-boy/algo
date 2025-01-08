@@ -18,12 +18,16 @@ func corpFlightBookings(bookings [][]int, n int) []int {
 
 		预定记录数量为 m:=len(bookings)
 
+		差分思想结论：
+			1. B1 = A1, Bi=Ai-A(i-1)  差分数组B的前缀和为原数组A
+			2. 原数组A的[l,r]区间都加d, 差分数组的变化为：B(l)+d, B(r+1)-d
+
 	*/
 
 	// m := len(bookings)
 
 	// 范围为1,n, 前面+一个，后面+一个, 0,n+1
-	delta := make([]int, n+2)
+	delta := make([]int, n+2) // 多一个位置是为了减去边界多余判断
 	sum := make([]int, n+1)
 
 	for i := range bookings {
@@ -31,10 +35,12 @@ func corpFlightBookings(bookings [][]int, n int) []int {
 		l := bookings[i][1]
 		seats := bookings[i][2]
 
+		// 2. 原数组A的[l,r]区间都加d, 差分数组的变化为：B(l)+d, B(r+1)-d
 		delta[f] += seats
 		delta[l+1] -= seats
 	}
 
+	// 求差分数组delta的前缀和, 结果为累加后的A
 	for i := 1; i <= n; i++ {
 		sum[i] = sum[i-1] + delta[i]
 	}
@@ -44,7 +50,14 @@ func corpFlightBookings(bookings [][]int, n int) []int {
 
 /*
 总结：
-	时间复杂度O(n)
+
+	该题中并没有求原数组的差分数组，为什么直接可以？
+		因为原始数组都是0，在0的基础上进行+操作, 因此可行
+
+	1. 先算原始数组A[l,r]区间+d, 等价于 B[l]+d , B[r+1]-d
+	2. 然后针对差分数组B，进行前缀和还原
+
+	时间复杂度O(n+m)
 */
 
 // @lc code=end
