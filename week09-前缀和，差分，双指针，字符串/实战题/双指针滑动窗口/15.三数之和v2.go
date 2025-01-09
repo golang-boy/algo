@@ -23,26 +23,6 @@ func threeSum(nums []int) [][]int {
 	n := len(nums)
 	ans := [][]int{}
 
-	seen := map[Triplet]bool{}
-
-	for i := 0; i < n; i++ {
-		for j := 0; j < n; j++ {
-			for k := 0; k < n; k++ {
-				if i != j && j != k && i != k {
-					if nums[i]+nums[j]+nums[k] == 0 {
-
-						r := []int{nums[i], nums[j], nums[k]}
-						sort.Ints(r)
-						triplet := Triplet{r[0], r[1], r[2]}
-						if !seen[triplet] {
-							seen[triplet] = true
-							ans = append(ans, r)
-						}
-					}
-				}
-			}
-		}
-	}
 	return ans
 }
 

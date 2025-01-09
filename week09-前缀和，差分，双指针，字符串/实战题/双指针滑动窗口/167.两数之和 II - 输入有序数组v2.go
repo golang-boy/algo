@@ -24,14 +24,17 @@ func twoSum(numbers []int, target int) []int {
 	*/
 
 	n := len(numbers)
+	j := n - 1
 	for i := 0; i < n; i++ {
 		// 移动一个端点，看另一个的变化
-		// 右边开始移动
-		for j := n - 1; j > i; j-- {
-			if numbers[i]+numbers[j] == target {
-				return []int{i + 1, j + 1}
-			}
+		// 右边开始移动,大于时一直右移
+		for ; j > i && numbers[i]+numbers[j] > target; j-- {
 		}
+
+		if j > i && numbers[i]+numbers[j] == target {
+			return []int{i + 1, j + 1}
+		}
+		// 小于时，i左移
 	}
 	return []int{}
 }
@@ -39,11 +42,16 @@ func twoSum(numbers []int, target int) []int {
 /*
 总结：
 	两层循环，想的是取优化内层循环，但实际做题时还是暴力
-	没有彻底理解双指针优化
 
-24/24 cases passed (359 ms)
-Your runtime beats 5.01 % of golang submissions
-Your memory usage beats 14.28 % of golang submissions (7.7 MB)
+	为什么比上个版本更优？
+		优不优看循环内外层循环执行了多少次.
+
+		v1版本，内层循环j对于每个i都会进行判断，直到找到
+
+
+24/24 cases passed (0 ms)
+Your runtime beats 100 % of golang submissions
+Your memory usage beats 40.63 % of golang submissions (7.6 MB)
 */
 
 // @lc code=end
