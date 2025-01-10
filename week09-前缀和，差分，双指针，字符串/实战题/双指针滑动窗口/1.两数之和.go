@@ -11,6 +11,40 @@
 // @lc code=start
 func twoSum(nums []int, target int) []int {
 
+	n := len(nums)
+
+	j := n - 1
+
+	newNums := MakeNums(nums)
+
+	sort.Slice(newNums, func(i, j int) bool {
+		return newNums[i].v < newNums[j].v
+	})
+
+	for i := 0; i < n; i++ {
+
+		for ; i < j && newNums[i].v+newNums[j].v > target; j-- {
+		}
+
+		if i < j && newNums[i].v+newNums[j].v == target {
+			return []int{newNums[i].i, newNums[j].i}
+		}
+	}
+	return []int{}
+}
+
+type Num struct {
+	v int
+	i int
+}
+
+func MakeNums(nums []int) []Num {
+	res := []Num{}
+	for i, v := range nums {
+		res = append(res, Num{v: v, i: i})
+	}
+
+	return res
 }
 
 // @lc code=end

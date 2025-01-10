@@ -1,4 +1,11 @@
 /*
+ * @Author: 刘慧东
+ * @Date: 2025-01-10 16:15:21
+ * @LastEditors: 刘慧东
+ * @LastEditTime: 2025-01-10 16:51:42
+ */
+
+/*
  * @lc app=leetcode.cn id=11 lang=golang
  * @lcpr version=20004
  *
@@ -33,24 +40,14 @@ func maxArea(height []int) int {
 
 	j := n - 1
 
-	for i := 0; i < n; i++ {
-		for ; i < j && height[i] >= height[j]; j-- {
-
-			// 是否需要计算
-			if (j < n-1 && height[j] > height[j+1]) || j == n-1 {
-				h := min(height[i], height[j])
-				w := j - i
-				ans = max(ans, h*w)
-			}
+	for i := 0; i < j; {
+		ans = max(ans, min(height[i], height[j])*(j-i))
+		if height[i] > height[j] {
+			j--
+		} else {
+			i++
 		}
 
-		if i < j && height[i] < height[j] {
-			if (i > 0 && height[i] > height[i-1]) || i == 0 {
-				h := min(height[i], height[j])
-				w := j - i
-				ans = max(ans, h*w)
-			}
-		}
 	}
 
 	// [1,2,1]
@@ -60,6 +57,24 @@ func maxArea(height []int) int {
 
 	return ans
 }
+
+/*
+
+总结:
+	什么时候用前缀和?
+	什么时候用单调队列?
+	什么时候双指针扫描?
+
+	如果满足区间减法性质：
+	    [l,r]可以由[1,r]和[1,l-1]导出
+	此时可以使用前缀和与差分思想
+
+
+	如果固定一个点，另一个点维护的信息是一个点，此时双指针扫描
+
+	如果是多个点构成的候选集合，则单调队列
+
+*/
 
 func min(a, b int) int {
 	if a > b {
