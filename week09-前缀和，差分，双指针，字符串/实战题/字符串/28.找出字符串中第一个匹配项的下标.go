@@ -10,6 +10,16 @@
 // @lcpr-template-end
 // @lc code=start
 func strStr(haystack string, needle string) int {
+	/*
+		rabin-karp基于hash的高效字符串搜索算法
+
+		定长n字符串s，长度m模式串t, 求t在s中出现
+
+		计算s的每个长度为m的子串的hash值, 宽度为m的滑动窗口滑过s
+
+		检测与t的hash值是否相等
+
+	*/
 
 	/*
 
