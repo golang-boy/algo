@@ -1,4 +1,10 @@
 /*
+ * @Author: 刘慧东
+ * @Date: 2025-01-15 17:00:25
+ * @LastEditors: 刘慧东
+ * @LastEditTime: 2025-01-15 17:00:25
+ */
+/*
  * @lc app=leetcode.cn id=28 lang=golang
  * @lcpr version=20004
  *
@@ -18,10 +24,6 @@ func strStr(haystack string, needle string) int {
 		计算s的每个长度为m的子串的hash值, 宽度为m的滑动窗口滑过s
 
 		检测与t的hash值是否相等
-
-	*/
-
-	/*
 
 		输入原始字符串，和模式子串
 		输出模式子串在原字符串中的第一个位置索引
