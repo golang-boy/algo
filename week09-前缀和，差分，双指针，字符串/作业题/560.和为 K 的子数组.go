@@ -11,7 +11,8 @@
 // @lc code=start
 func subarraySum(nums []int, k int) int {
 	/*
-	 */
+	   计算每个位置的前缀和
+	*/
 
 	for {
 
