@@ -11,6 +11,32 @@
 // @lc code=start
 func reverseWords(s string) string {
 
+	st := []string{}
+
+	temp := []rune{}
+	for _, ch := range s {
+		if ch == ' ' {
+			if len(temp) != 0 {
+				st = append(st, string(temp))
+				temp = []rune{}
+			}
+		} else {
+			temp = append(temp, ch)
+		}
+	}
+	if len(temp) != 0 {
+		st = append(st, string(temp))
+	}
+
+	ans := ""
+	for len(st) != 0 {
+		ans += st[len(st)-1]
+		st = st[:len(st)-1]
+		if len(st) != 0 {
+			ans += " "
+		}
+	}
+	return ans
 }
 
 // @lc code=end

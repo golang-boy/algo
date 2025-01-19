@@ -10,6 +10,12 @@
 // @lcpr-template-end
 // @lc code=start
 func subarraySum(nums []int, k int) int {
+	/*
+	 */
+
+	for {
+
+	}
 
 }
 

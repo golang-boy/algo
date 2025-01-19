@@ -11,6 +11,22 @@
 // @lc code=start
 func lengthOfLastWord(s string) int {
 
+	/*
+		倒序遍历字符串，遇到空格统计一次长度
+	*/
+
+	ans := 0
+
+	ss := []byte(s)
+	i := len(s) - 1
+
+	for ; i >= 0 && ss[i] == ' '; i-- {
+	}
+
+	for ; i >= 0 && ss[i] != ' '; i-- {
+		ans++
+	}
+	return ans
 }
 
 // @lc code=end

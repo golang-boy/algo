@@ -9,8 +9,33 @@
 
 // @lcpr-template-end
 // @lc code=start
-func reverseOnlyLetters(s string) string {
+func reverseOnlyLetters(ss string) string {
+	/*
+	 */
 
+	l, r := 0, len(ss)-1
+
+	s := []byte(ss)
+	for l < r {
+
+		if !isLetter(s[l]) {
+			l++
+			continue
+		}
+		if !isLetter(s[r]) {
+			r--
+			continue
+		}
+		s[l], s[r] = s[r], s[l]
+
+		l++
+		r--
+	}
+	return string(s)
+}
+
+func isLetter(s byte) bool {
+	return (s >= 'A' && s <= 'Z') || (s >= 'a' && s <= 'z')
 }
 
 // @lc code=end
@@ -25,7 +50,7 @@ func reverseOnlyLetters(s string) string {
 // @lcpr case=end
 
 // @lcpr case=start
-// code-Q!"\n
+// "code-Q!"\n
 // @lcpr case=end
 
 */

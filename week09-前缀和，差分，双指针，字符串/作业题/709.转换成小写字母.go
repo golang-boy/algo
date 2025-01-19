@@ -9,9 +9,27 @@
 
 // @lcpr-template-end
 // @lc code=start
-func toLowerCase(s string) string {
+func toLowerCase(ss string) string {
 
+	s := []byte(ss)
+
+	for i := 0; i < len(s); i++ {
+
+		if s[i] >= 'A' && s[i] <= 'Z' {
+			s[i] = s[i] - 'A' + 'a'
+		}
+	}
+	return string(s)
 }
+
+/*
+总结：
+	时间复杂度为O(n)
+	空间复杂度为O(n)
+
+	核心关键为：s[i] = s[i] - 'A' + 'a'
+
+*/
 
 // @lc code=end
 
