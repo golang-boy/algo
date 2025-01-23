@@ -22,13 +22,27 @@ func isMatch(s string, p string) bool {
 		}
 
 		if p[j-1] == '*' {
-			f[i][j] = f[i][j - 2] ||
+			f[i][j] = f[i][j - 2] || (f[i-1][j] && p[j-2] == s[i-1]) || p[j-2] == '.'
 		}
 
+		f[0][0]  = ( s[0] == p[0]  || p[0] == '.' )
 
-
+		f[1][1]  = f[0][0]  ||  if　p[1] == '*'  p[0] == s[1] || if p[1] == '.'
 
 	*/
+
+	f := make([][]bool, len(s)+1)
+	for i := range f {
+		f[i] = make([]bool, len(p)+1)
+	}
+
+	f[0][0] = true
+
+	for j := 1; j <= len(p)+1; j++ {
+		if p[j-1] == '*' {
+			f[0][j] = f[0][j-2]
+		}
+	}
 
 }
 
