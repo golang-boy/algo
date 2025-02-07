@@ -7,6 +7,10 @@
 // @lc code=start
 func maximalRectangle(matrix [][]byte) int {
 
+	/*
+
+	 */
+
 }
 
 // @lc code=end
